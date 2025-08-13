@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin - A Poet of Broken Dreams</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;1,400&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="header">
+        <nav class="nav">
+            <div class="nav-brand">
+                <h1>A Poet of Broken Dreams - Admin Panel</h1>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#poems">Poems</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="home" class="hero">
+            <div class="hero-content">
+                <h2 class="hero-title">Admin Poetry Management</h2>
+                <p class="hero-subtitle">Manage your poetry collection privately</p>
+                <a href="#poems" class="cta-button">Manage Poems</a>
+            </div>
+        </section>
+
+        <section id="poems" class="poems-section">
+            <div class="container">
+                <h2 class="section-title">Poetry Collection Management</h2>
+                <div class="poem-management-header">
+                    <button class="add-poem-btn admin-only" onclick="addNewPoem()">+ Add New Poem</button>
+                    <button class="admin-login-btn" onclick="showAdminLogin()" id="show-admin-btn">Admin Login</button>
+                </div>
+                <div class="poems-grid">
+                    <!-- Poems will be dynamically loaded here -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Admin Login Modal -->
+        <div id="admin-login" class="modal" style="display: none;">
+            <div class="modal-content">
+                <h3>Admin Access Required</h3>
+                <p>Enter the admin password to manage poems:</p>
+                <input type="password" id="admin-password" placeholder="Enter admin password" onkeypress="handleLoginKeyPress(event)">
+                <div id="login-error" class="error-message" style="display: none;">
+                    Incorrect password. Please try again.
+                </div>
+                <div class="modal-actions">
+                    <button onclick="attemptAdminLogin()" class="login-btn">Login</button>
+                    <button onclick="hideAdminLogin()" class="cancel-modal-btn">Cancel</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Add Poem Form -->
+        <section id="add-poem-form" class="add-poem-section admin-only" style="display: none;">
+            <div class="container">
+                <div class="form-container">
+                    <h2 id="form-title" class="section-title">Add New Poem</h2>
+                    <form id="poem-form" onsubmit="submitPoem(event)">
+                        <input type="hidden" id="editing-poem-id" value="">
+                        
+                        <div class="form-group">
+                            <label for="poem-title">Poem Title *</label>
+                            <input type="text" id="poem-title" required placeholder="Enter your poem title">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="poem-subtitle">Subtitle (Optional)</label>
+                            <input type="text" id="poem-subtitle" placeholder="A brief description or theme">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="poem-content">Poem Content *</label>
+                            <textarea id="poem-content" required placeholder="Write your poem here...&#10;&#10;You can write multiple stanzas&#10;Just press Enter for line breaks"></textarea>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="poem-tags">Tags (Optional)</label>
+                            <input type="text" id="poem-tags" placeholder="love, hope, memories (separate with commas)">
+                        </div>
+                        
+                        <div class="form-actions">
+                            <button type="submit" id="submit-btn" class="submit-btn">Add Poem</button>
+                            <button type="button" onclick="cancelForm()" class="cancel-btn">Cancel</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <section id="about" class="about-section">
+            <div class="container">
+                <h2 class="section-title">Admin Instructions</h2>
+                <div class="about-content">
+                    <p><strong>Welcome to your private admin panel!</strong> This page allows you to manage your poetry collection safely. Changes made here will be saved locally and can be exported to your public site.</p>
+                    <p><strong>Default Password:</strong> <code>poet2025!</code> (Remember to change this in secure-poem-manager.js)</p>
+                    <p><strong>Usage:</strong> Login with admin password, add/edit/delete poems, then export the data to update your public site.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="contact-section">
+            <div class="container">
+                <h2 class="section-title">Export & Deployment</h2>
+                <p>Use the buttons below to manage your poetry data:</p>
+                <div class="social-links">
+                    <button onclick="exportPoems()" class="social-link">Export Poems</button>
+                    <button onclick="importPoems()" class="social-link">Import Poems</button>
+                    <button onclick="deployToPublic()" class="social-link">Deploy to Public</button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 A Poet of Broken Dreams - Admin Panel</p>
+            <p>Private management interface</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script src="poem-manager.js"></script>
+    <script src="secure-poem-manager.js"></script>
+    <script src="admin-tools.js"></script>
+</body>
+</html>
