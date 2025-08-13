@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A Poet of Broken Dreams - Poetry Collection</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;1,400&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="header">
+        <nav class="nav">
+            <div class="nav-brand">
+                <h1>A Poet of Broken Dreams</h1>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#poems">Poems</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="home" class="hero">
+            <div class="hero-content">
+                <h2 class="hero-title">Welcome to My Poetry Collection</h2>
+                <p class="hero-subtitle">Where broken dreams find their voice in verse</p>
+                <a href="#poems" class="cta-button">Explore Poems</a>
+            </div>
+        </section>
+
+        <section id="poems" class="poems-section">
+            <div class="container">
+                <h2 class="section-title">Poetry Collection</h2>
+                <div class="poem-management-header">
+                    <button class="add-poem-btn" onclick="addNewPoem()">+ Add New Poem</button>
+                </div>
+                <div class="poems-grid">
+                    <!-- Poems will be dynamically loaded here -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Add Poem Form (Hidden by default) -->
+        <section id="add-poem-form" class="add-poem-section" style="display: none;">
+            <div class="container">
+                <div class="form-container">
+                    <h2 id="form-title" class="section-title">Add New Poem</h2>
+                    <form id="poem-form" onsubmit="submitPoem(event)">
+                        <input type="hidden" id="editing-poem-id" value="">
+                        
+                        <div class="form-group">
+                            <label for="poem-title">Poem Title *</label>
+                            <input type="text" id="poem-title" required placeholder="Enter your poem title">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="poem-subtitle">Subtitle (Optional)</label>
+                            <input type="text" id="poem-subtitle" placeholder="A brief description or theme">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="poem-content">Poem Content *</label>
+                            <textarea id="poem-content" required placeholder="Write your poem here...&#10;&#10;You can write multiple stanzas&#10;Just press Enter for line breaks"></textarea>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="poem-tags">Tags (Optional)</label>
+                            <input type="text" id="poem-tags" placeholder="love, hope, memories (separate with commas)">
+                        </div>
+                        
+                        <div class="form-actions">
+                            <button type="submit" id="submit-btn" class="submit-btn">Add Poem</button>
+                            <button type="button" onclick="cancelForm()" class="cancel-btn">Cancel</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <section id="about" class="about-section">
+            <div class="container">
+                <h2 class="section-title">About the Poet</h2>
+                <div class="about-content">
+                    <p>Welcome to my collection of verses, where each poem is a window into the soul of someone who believes that even broken dreams carry beauty. Through these words, I explore themes of hope, loss, love, and the endless human capacity for renewal.</p>
+                    <p>Poetry has always been my way of making sense of the world, of finding light in the darkest corners of experience. I hope these poems resonate with you and offer comfort, inspiration, or simply a moment of reflection.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="contact-section">
+            <div class="container">
+                <h2 class="section-title">Connect</h2>
+                <p>Thank you for visiting my poetry collection. Feel free to reach out if these words have touched you in any way.</p>
+                <div class="social-links">
+                    <a href="mailto:poet@example.com" class="social-link">Email</a>
+                    <a href="#" class="social-link">Twitter</a>
+                    <a href="#" class="social-link">Instagram</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 A Poet of Broken Dreams. All rights reserved.</p>
+            <p>Hosted with ❤️ on GitHub Pages</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script src="poem-manager.js"></script>
+</body>
+</html>
