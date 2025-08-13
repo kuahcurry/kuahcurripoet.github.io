@@ -177,9 +177,13 @@ body {
 .poem-management-header {
     text-align: center;
     margin-bottom: 2rem;
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
 }
 
-.add-poem-btn {
+.add-poem-btn, .admin-login-btn {
     background: linear-gradient(45deg, #667eea, #764ba2);
     color: white;
     border: none;
@@ -191,9 +195,148 @@ body {
     font-size: 1rem;
 }
 
-.add-poem-btn:hover {
+.admin-login-btn {
+    background: linear-gradient(45deg, #28a745, #20c997);
+}
+
+.add-poem-btn:hover, .admin-login-btn:hover {
     transform: translateY(-2px);
     box-shadow: 0 8px 20px rgba(102, 126, 234, 0.4);
+}
+
+.admin-login-btn:hover {
+    box-shadow: 0 8px 20px rgba(40, 167, 69, 0.4);
+}
+
+/* Admin Indicator */
+#admin-indicator {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-left: auto;
+}
+
+.admin-badge {
+    background: linear-gradient(45deg, #28a745, #20c997);
+    color: white;
+    padding: 5px 12px;
+    border-radius: 15px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.logout-btn {
+    background: #dc3545;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 12px;
+    font-size: 0.8rem;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.logout-btn:hover {
+    background: #c82333;
+}
+
+/* Modal Styles */
+.modal {
+    position: fixed;
+    z-index: 2000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(5px);
+}
+
+.modal-content {
+    background: white;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+    max-width: 400px;
+    width: 90%;
+    text-align: center;
+}
+
+.modal-content h3 {
+    color: #4a5568;
+    margin-bottom: 15px;
+    font-family: 'Playfair Display', serif;
+}
+
+.modal-content p {
+    color: #6c757d;
+    margin-bottom: 20px;
+}
+
+.modal-content input {
+    width: 100%;
+    padding: 12px 16px;
+    border: 2px solid #e2e8f0;
+    border-radius: 10px;
+    font-size: 1rem;
+    margin-bottom: 15px;
+    transition: border-color 0.3s ease;
+}
+
+.modal-content input:focus {
+    outline: none;
+    border-color: #667eea;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+.modal-actions {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+}
+
+.login-btn {
+    background: linear-gradient(45deg, #28a745, #20c997);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 20px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.login-btn:hover {
+    transform: translateY(-1px);
+}
+
+.cancel-modal-btn {
+    background: #f8f9fa;
+    color: #6c757d;
+    border: 2px solid #e9ecef;
+    padding: 10px 20px;
+    border-radius: 20px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.cancel-modal-btn:hover {
+    background: #e9ecef;
+    color: #495057;
+}
+
+.error-message {
+    color: #dc3545;
+    background: #f8d7da;
+    border: 1px solid #f5c6cb;
+    padding: 8px 12px;
+    border-radius: 8px;
+    margin: 10px 0;
+    font-size: 0.9rem;
 }
 
 .poem-actions {
@@ -506,6 +649,28 @@ body {
         width: 100%;
         justify-content: center;
     }
+    
+    .poem-management-header {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    #admin-indicator {
+        flex-direction: column;
+        gap: 5px;
+        margin-left: 0;
+        margin-top: 10px;
+    }
+    
+    .modal-content {
+        padding: 20px;
+        margin: 0 15px;
+    }
+    
+    .modal-actions {
+        flex-direction: column;
+        align-items: stretch;
+    }
 }
 
 @media (max-width: 480px) {
@@ -548,5 +713,10 @@ body {
     .form-group input,
     .form-group textarea {
         padding: 10px 12px;
+    }
+    
+    .add-poem-btn, .admin-login-btn {
+        font-size: 0.9rem;
+        padding: 10px 20px;
     }
 }

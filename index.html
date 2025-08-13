@@ -35,7 +35,8 @@
             <div class="container">
                 <h2 class="section-title">Poetry Collection</h2>
                 <div class="poem-management-header">
-                    <button class="add-poem-btn" onclick="addNewPoem()">+ Add New Poem</button>
+                    <button class="add-poem-btn admin-only" onclick="addNewPoem()" style="display: none;">+ Add New Poem</button>
+                    <button class="admin-login-btn" onclick="showAdminLogin()" id="show-admin-btn">Admin Login</button>
                 </div>
                 <div class="poems-grid">
                     <!-- Poems will be dynamically loaded here -->
@@ -43,8 +44,24 @@
             </div>
         </section>
 
+        <!-- Admin Login Modal -->
+        <div id="admin-login" class="modal" style="display: none;">
+            <div class="modal-content">
+                <h3>Admin Access Required</h3>
+                <p>Enter the admin password to manage poems:</p>
+                <input type="password" id="admin-password" placeholder="Enter admin password" onkeypress="handleLoginKeyPress(event)">
+                <div id="login-error" class="error-message" style="display: none;">
+                    Incorrect password. Please try again.
+                </div>
+                <div class="modal-actions">
+                    <button onclick="attemptAdminLogin()" class="login-btn">Login</button>
+                    <button onclick="hideAdminLogin()" class="cancel-modal-btn">Cancel</button>
+                </div>
+            </div>
+        </div>
+
         <!-- Add Poem Form (Hidden by default) -->
-        <section id="add-poem-form" class="add-poem-section" style="display: none;">
+        <section id="add-poem-form" class="add-poem-section admin-only" style="display: none;">
             <div class="container">
                 <div class="form-container">
                     <h2 id="form-title" class="section-title">Add New Poem</h2>
@@ -112,5 +129,6 @@
 
     <script src="script.js"></script>
     <script src="poem-manager.js"></script>
+    <script src="secure-poem-manager.js"></script>
 </body>
 </html>
